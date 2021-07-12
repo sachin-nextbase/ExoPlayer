@@ -38,6 +38,7 @@ import static com.google.common.base.Strings.nullToEmpty;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.util.SparseArray;
 import androidx.annotation.Nullable;
 import com.google.android.exoplayer2.C;
@@ -421,6 +422,9 @@ import org.checkerframework.checker.nullness.qual.MonotonicNonNull;
     }
 
     private void handleRtspMessage(List<String> message) {
+      for (String messageSingle : message) {
+        Log.d("RTSP", messageSingle);
+      }
       RtspResponse response = RtspMessageUtil.parseResponse(message);
 
       int cSeq = Integer.parseInt(checkNotNull(response.headers.get(RtspHeaders.CSEQ)));

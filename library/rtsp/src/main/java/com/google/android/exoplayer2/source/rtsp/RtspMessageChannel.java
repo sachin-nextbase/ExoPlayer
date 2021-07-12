@@ -22,6 +22,7 @@ import static com.google.android.exoplayer2.util.Assertions.checkStateNotNull;
 
 import android.os.Handler;
 import android.os.HandlerThread;
+import android.util.Log;
 import androidx.annotation.IntDef;
 import androidx.annotation.Nullable;
 import com.google.android.exoplayer2.C;
@@ -180,6 +181,9 @@ import org.checkerframework.checker.nullness.qual.MonotonicNonNull;
    * @param message The list of strings representing the serialized RTSP message.
    */
   public void send(List<String> message) {
+    for (String messageSingle : message) {
+      Log.d("RTSP", messageSingle);
+    }
     checkStateNotNull(sender);
     sender.send(message);
   }
